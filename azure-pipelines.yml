@@ -38,7 +38,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
 
-
-- script: docker login -u $(dockerId) -p $(pswd) contreg1.azurecr.io
-
-- script: docker build -t $(dockerId)/$(imageName) .  # add options to this command to meet your needs
+- script: |
+    docker build -t $(dockerId).azurecr.io/$(imageName) .
+    docker login -u $(dockerId) -p $(pswd) $(dockerId).azurecr.io
+    docker push $(dockerId).azurecr.io/$(imageName)
