@@ -13,6 +13,12 @@ steps:
   inputs:
     command: install
 
+- task: Docker@1
+  displayName: 'Build an image'
+  inputs:
+    azureSubscriptionEndpoint: 'ContosoAzureSubscription'
+    azureContainerRegistry: contoso.azurecr.io
+    
 - task: Npm@1
   displayName: 'npm test'
   inputs:
